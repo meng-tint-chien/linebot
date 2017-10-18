@@ -23,6 +23,9 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('y9AC19uX8VOLcgpFZpJRjx2v9LJ9aDSUCgvHZhnhdijtDbSKhvcayE9hPRwFlCRjUvMVPCZYox1rYMwaekLeEVyJ0gDv9cTA0dGdRyigKk5Qjos+gwUDsxI2H9IP7SpgfKyGmakdqUpI+uRRVPiaKgdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('3b1a6196ac1e2c07c215023f0287be4b')
 
+client_id = config['imgur_api']['9976db0687776b7']
+client_secret = config['imgur_api']['145147997222a4f55998364e7470b1f348f33e93']
+album_id = config['imgur_api']['6FdES']
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -61,10 +64,16 @@ def apple_news():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
         
-        content = apple_news()
+        client = ImgurClient(client_id, client_secret)
+        images = client.get_album_images(album_id)
+        index = random.randint(0, len(images) - 1)
+        url = images[index].link
+        image_message = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=content))
+            event.reply_token, image_message)
         
 
 
