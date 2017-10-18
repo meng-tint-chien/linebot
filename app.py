@@ -75,7 +75,7 @@ def handle_message(event):
             event.reply_token, image_message)
         return 0
 		
-		else if event.message == "蘋果":
+		elif event.message == "蘋果":
 		content = apple_news()
         line_bot_api.reply_message(
             event.reply_token,
