@@ -18,11 +18,11 @@ app = Flask(__name__)
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-line_bot_api = LineBotApi(config['line_bot']['Channel_Access_Token'])
-handler = WebhookHandler(config['line_bot']['Channel_Secret'])
-client_id = config['imgur_api']['Client_ID']
-client_secret = config['imgur_api']['Client_Secret']
-album_id = config['imgur_api']['Album_ID']
+line_bot_api = LineBotApi(config['line_bot']['y9AC19uX8VOLcgpFZpJRjx2v9LJ9aDSUCgvHZhnhdijtDbSKhvcayE9hPRwFlCRjUvMVPCZYox1rYMwaekLeEVyJ0gDv9cTA0dGdRyigKk5Qjos+gwUDsxI2H9IP7SpgfKyGmakdqUpI+uRRVPiaKgdB04t89/1O/w1cDnyilFU='])
+handler = WebhookHandler(config['line_bot']['3b1a6196ac1e2c07c215023f0287be4b'])
+client_id = config['imgur_api']['9976db0687776b7']
+client_secret = config['imgur_api']['157151fd0f242f8183e00ab21b36fa3611a28f36']
+album_id = config['imgur_api']['6FdES']
 API_Get_Image = config['other_api']['API_Get_Image']
 
 
