@@ -12,7 +12,9 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-from linebot.models import *
+from linebot.models import (
+    MessageEvent, TextMessage, TextSendMessage,
+)
 
 
 
@@ -58,7 +60,8 @@ def apple_news():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    
+   print("event.reply_token:", event.reply_token)
+   print("event.message.text:", event.message.text)  
 		if event.message.text == "蘋果即時新聞":
         content = apple_news()
         line_bot_api.reply_message(
