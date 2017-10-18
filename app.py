@@ -62,8 +62,7 @@ def apple_news():
 def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
-        def handle_message(event):
-    line_bot_api.reply_message(
+        line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=content))
 
