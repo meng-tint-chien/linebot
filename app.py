@@ -62,7 +62,7 @@ def apple_news():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-        if event.message == "抽"
+        if event.message == "fuck"
         client = ImgurClient(client_id, client_secret)
         images = client.get_album_images(album_id)
         index = random.randint(0, len(images) - 1)
