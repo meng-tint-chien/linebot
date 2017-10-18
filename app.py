@@ -15,9 +15,6 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-
-
-
 app = Flask(__name__)
 
 line_bot_api = LineBotApi('y9AC19uX8VOLcgpFZpJRjx2v9LJ9aDSUCgvHZhnhdijtDbSKhvcayE9hPRwFlCRjUvMVPCZYox1rYMwaekLeEVyJ0gDv9cTA0dGdRyigKk5Qjos+gwUDsxI2H9IP7SpgfKyGmakdqUpI+uRRVPiaKgdB04t89/1O/w1cDnyilFU=')
@@ -65,7 +62,6 @@ def handle_message(event):
         line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
-
 
 if __name__ == "__main__":
     app.run()
