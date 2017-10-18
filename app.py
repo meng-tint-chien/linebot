@@ -75,8 +75,8 @@ def handle_message(event):
             event.reply_token, image_message)
         return 0
         if event.message.text == "蘋果即時新聞":
-        content = apple_news()
-        line_bot_api.reply_message(
+            content = apple_news()
+            line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
