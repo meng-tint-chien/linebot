@@ -62,7 +62,7 @@ def apple_news():
 def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
-        if event.message.text == "蘋果":
+        if event.message.text == "apple":
         content = apple_news()
         line_bot_api.reply_message(
             event.reply_token,
