@@ -23,9 +23,9 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('y9AC19uX8VOLcgpFZpJRjx2v9LJ9aDSUCgvHZhnhdijtDbSKhvcayE9hPRwFlCRjUvMVPCZYox1rYMwaekLeEVyJ0gDv9cTA0dGdRyigKk5Qjos+gwUDsxI2H9IP7SpgfKyGmakdqUpI+uRRVPiaKgdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('3b1a6196ac1e2c07c215023f0287be4b')
 
-client_id = config['imgur_api']['9976db0687776b7']
-client_secret = config['imgur_api']['145147997222a4f55998364e7470b1f348f33e93']
-album_id = config['imgur_api']['6FdES']
+client_id = config['9976db0687776b7']
+client_secret = config['145147997222a4f55998364e7470b1f348f33e93']
+album_id = config['6FdES']
 
 @app.route("/callback", methods=['POST'])
 def callback():
