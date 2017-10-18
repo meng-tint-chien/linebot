@@ -68,12 +68,7 @@ def handle_message(event):
         TextSendMessage(text=event.message.text))
         return 0
 		
-		else:
-		content = apple_news()
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=content))
-        return 0
+		
 		
 
 
