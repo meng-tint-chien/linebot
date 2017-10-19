@@ -259,6 +259,31 @@ def handle_message(event):
             )
             line_bot_api.reply_message(event.reply_token, image_message)
 			
+        if event.message.text == "帥哥":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/89iGrd2.jpg",
+                preview_image_url="https://i.imgur.com/89iGrd2.jpg"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
+			
+        if event.message.text == "八七雯":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/y2VHmR0.jpg",
+                preview_image_url="https://i.imgur.com/y2VHmR0.jpg"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
+        if event.message.text == "開會":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/veAX519.jpg",
+                preview_image_url="https://i.imgur.com/veAX519.jpg"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
+        if event.message.text == "開喝":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/qbX5uQp.jpg",
+                preview_image_url="https://i.imgur.com/qbX5uQp.jpg"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
         if event.message.text == "港組":
             image_message = ImageSendMessage(
                 original_content_url="https://i.imgur.com/S5Hljc3.jpg",
@@ -271,6 +296,19 @@ def handle_message(event):
             print("event.message.text:", event.message.text)
             client = ImgurClient(client_id, client_secret)
             images = client.get_album_images("n873Y")
+            index = random.randint(0, len(images) - 1)
+            url = images[index].link
+            image_message = ImageSendMessage(
+                original_content_url=url,
+                preview_image_url=url
+            )
+            line_bot_api.reply_message(
+            event.reply_token, image_message)
+        if event.message.text == "控肉抽":
+            print("event.reply_token:", event.reply_token)
+            print("event.message.text:", event.message.text)
+            client = ImgurClient(client_id, client_secret)
+            images = client.get_album_images("Z86oo")
             index = random.randint(0, len(images) - 1)
             url = images[index].link
             image_message = ImageSendMessage(
