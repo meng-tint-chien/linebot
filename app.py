@@ -240,24 +240,24 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text="死屁孩"))
 		    
-        if event.message.text == "死屁孩":
+        if event.message.text == "屁孩":
             image_message = ImageSendMessage(
-                original_content_url="https://imgur.com/z06PIVw",
-                preview_image_url="https://imgur.com/z06PIVw"
+                original_content_url="https://i.imgur.com/q97n3fa.png",
+                preview_image_url="https://i.imgur.com/q97n3fa.png"
             )
             line_bot_api.reply_message(event.reply_token, image_message)
 			
-        if event.message.text == "屁孩":
+        if event.message.text == "死屁孩":
             image_message = ImageSendMessage(
-                original_content_url="https://imgur.com/q97n3fa",
-                preview_image_url="https://imgur.com/q97n3fa"
+                original_content_url="https://i.imgur.com/z06PIVw.png",
+                preview_image_url="https://i.imgur.com/z06PIVw.png"
             )
             line_bot_api.reply_message(event.reply_token, image_message)
 			
         if event.message.text == "港組":
             image_message = ImageSendMessage(
-                original_content_url="https://imgur.com/q4trPO4",
-                preview_image_url="https://imgur.com/q4trPO4"
+                original_content_url="https://i.imgur.com/S5Hljc3.jpg",
+                preview_image_url="https://i.imgur.com/S5Hljc3.jpg"
             )
             line_bot_api.reply_message(event.reply_token, image_message)
 
