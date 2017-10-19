@@ -291,6 +291,37 @@ def handle_message(event):
             )
             line_bot_api.reply_message(event.reply_token, image_message)
         
+        if event.message.text == "操":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/qg7xrPJ.jpg",
+                preview_image_url="https://i.imgur.com/qg7xrPJ.jpg"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
+        if event.message.text == "林寬":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/Rt9HeIp.jpg",
+                preview_image_url="https://i.imgur.com/Rt9HeIp.jpg"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
+        if event.message.text == "先開喝":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/oaBS0bo.jpg",
+                preview_image_url="https://i.imgur.com/oaBS0bo.jpg"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
+        if event.message.text == "胖":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/jeJ3iww.png",
+                preview_image_url="https://i.imgur.com/jeJ3iww.png"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
+        if event.message.text == "英文王":
+            image_message = ImageSendMessage(
+                original_content_url="https://i.imgur.com/twaSjzP.jpg",
+                preview_image_url="https://i.imgur.com/twaSjzP.jpg"
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
+		
         if event.message.text == "嗨抽":
             print("event.reply_token:", event.reply_token)
             print("event.message.text:", event.message.text)
