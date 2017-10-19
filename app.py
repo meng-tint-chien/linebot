@@ -62,16 +62,19 @@ def apple_news():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-        print("event.reply_token:", event.reply_token)
-        print("event.message.text:", event.message.text)
+        
         if event.message.text == "蘋":
+		    print("event.reply_token:", event.reply_token)
+            print("event.message.text:", event.message.text)
             content = apple_news()
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
-        else:
-            event.message.text == "抽"
+		
+        if event.message.text == "抽":
+		    print("event.reply_token:", event.reply_token)
+            print("event.message.text:", event.message.text)
             client = ImgurClient(client_id, client_secret)
             images = client.get_album_images(album_id)
             index = random.randint(0, len(images) - 1)
