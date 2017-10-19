@@ -235,6 +235,11 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=content))
 			
+        if event.message.text == "搞":
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="嗨嗎"))
+			
         if event.message.text == "幹":
             line_bot_api.reply_message(
             event.reply_token,
@@ -260,7 +265,21 @@ def handle_message(event):
                 preview_image_url="https://i.imgur.com/S5Hljc3.jpg"
             )
             line_bot_api.reply_message(event.reply_token, image_message)
-
+        
+        if event.message.text == "嗨抽":
+            print("event.reply_token:", event.reply_token)
+            print("event.message.text:", event.message.text)
+            client = ImgurClient(client_id, client_secret)
+            images = client.get_album_images("n873Y")
+            index = random.randint(0, len(images) - 1)
+            url = images[index].link
+            image_message = ImageSendMessage(
+                original_content_url=url,
+                preview_image_url=url
+            )
+            line_bot_api.reply_message(
+            event.reply_token, image_message)
+        
 
         if event.message.text == "抽":
             print("event.reply_token:", event.reply_token)
