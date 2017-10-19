@@ -169,7 +169,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=content))
         
-		if event.message.text == "電影":
+        if event.message.text == "電影":
             content = movie()
             line_bot_api.reply_message(
             event.reply_token,
