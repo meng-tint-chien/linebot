@@ -243,36 +243,27 @@ def handle_message(event):
 		    
         if event.message.text == "死屁孩":
             content = movie()
-            line_bot_api.reply_message(
-            event.reply_token,
             image_message = ImageSendMessage(
                 original_content_url="https://imgur.com/z06PIVw",
                 preview_image_url="https://imgur.com/z06PIVw"
             )
-            line_bot_api.reply_message(
-            event.reply_token, image_message)
+            line_bot_api.reply_message(event.reply_token, image_message)
 			
         if event.message.text == "屁孩":
             content = movie()
-            line_bot_api.reply_message(
-            event.reply_token,
             image_message = ImageSendMessage(
                 original_content_url="https://imgur.com/q97n3fa",
                 preview_image_url="https://imgur.com/q97n3fa"
             )
-            line_bot_api.reply_message(
-            event.reply_token, image_message)
+            line_bot_api.reply_message(event.reply_token, image_message)
 			
         if event.message.text == "港組":
             content = movie()
-            line_bot_api.reply_message(
-            event.reply_token,
             image_message = ImageSendMessage(
                 original_content_url="https://imgur.com/q4trPO4",
                 preview_image_url="https://imgur.com/q4trPO4"
             )
-            line_bot_api.reply_message(
-            event.reply_token, image_message)
+            line_bot_api.reply_message(event.reply_token, image_message)
 
 
         if event.message.text == "抽":
