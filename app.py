@@ -236,13 +236,11 @@ def handle_message(event):
             TextSendMessage(text=content))
 			
         if event.message.text == "幹":
-            content = movie()
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="死屁孩"))
 		    
         if event.message.text == "死屁孩":
-            content = movie()
             image_message = ImageSendMessage(
                 original_content_url="https://imgur.com/z06PIVw",
                 preview_image_url="https://imgur.com/z06PIVw"
@@ -250,7 +248,6 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, image_message)
 			
         if event.message.text == "屁孩":
-            content = movie()
             image_message = ImageSendMessage(
                 original_content_url="https://imgur.com/q97n3fa",
                 preview_image_url="https://imgur.com/q97n3fa"
@@ -258,7 +255,6 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, image_message)
 			
         if event.message.text == "港組":
-            content = movie()
             image_message = ImageSendMessage(
                 original_content_url="https://imgur.com/q4trPO4",
                 preview_image_url="https://imgur.com/q4trPO4"
