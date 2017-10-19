@@ -359,7 +359,7 @@ def handle_message(event):
             )
             line_bot_api.reply_message(event.reply_token, image_message)
 			
-        if event.message.text == "女神":
+        if event.message.text == "給我女神照":
             print("event.reply_token:", event.reply_token)
             print("event.message.text:", event.message.text)
             client = ImgurClient(client_id, client_secret)
