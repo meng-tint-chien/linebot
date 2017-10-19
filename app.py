@@ -51,7 +51,7 @@ def apple_news():
     soup = BeautifulSoup(res.text, 'html.parser')
     content = ""
     for index, data in enumerate(soup.select('.rtddt a'), 0):
-        if index == 15:
+        if index == 5:
             return content
         if head in data['href']:
             link = data['href']
@@ -59,19 +59,123 @@ def apple_news():
             link = head + data['href']
         content += '{}\n\n'.format(link)
     return content
+def ptt_beauty():
+    rs = requests.session()
+    res = rs.get('https://www.ptt.cc/bbs/Beauty/index.html', verify=False)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    all_page_url = soup.select('.btn.wide')[1]['href']
+    start_page = get_page_number(all_page_url)
+    page_term = 2  # crawler count
+    push_rate = 10  # 推文
+    index_list = []
+    article_list = []
+    for page in range(start_page, start_page - page_term, -1):
+        page_url = 'https://www.ptt.cc/bbs/Beauty/index{}.html'.format(page)
+        index_list.append(page_url)
+
+    # 抓取 文章標題 網址 推文數
+    while index_list:
+        index = index_list.pop(0)
+        res = rs.get(index, verify=False)
+        # 如網頁忙線中,則先將網頁加入 index_list 並休息1秒後再連接
+        if res.status_code != 200:
+            index_list.append(index)
+            # print u'error_URL:',index
+            # time.sleep(1)
+        else:
+            article_list = craw_page(res, push_rate)
+            # print u'OK_URL:', index
+            # time.sleep(0.05)
+    content = ''
+    for article in article_list:
+        data = '[{} push] {}\n{}\n\n'.format(article.get('rate', None), article.get('title', None),
+                                             article.get('url', None))
+        content += data
+    return content
+
+def ptt_gossiping():
+    rs = requests.session()
+    load = {
+        'from': '/bbs/Gossiping/index.html',
+        'yes': 'yes'
+    }
+    res = rs.post('https://www.ptt.cc/ask/over18', verify=False, data=load)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    all_page_url = soup.select('.btn.wide')[1]['href']
+    start_page = get_page_number(all_page_url)
+    index_list = []
+    article_gossiping = []
+    for page in range(start_page, start_page - 2, -1):
+        page_url = 'https://www.ptt.cc/bbs/Gossiping/index{}.html'.format(page)
+        index_list.append(page_url)
+
+    # 抓取 文章標題 網址 推文數
+    while index_list:
+        index = index_list.pop(0)
+        res = rs.get(index, verify=False)
+        # 如網頁忙線中,則先將網頁加入 index_list 並休息1秒後再連接
+        if res.status_code != 200:
+            index_list.append(index)
+            # print u'error_URL:',index
+            # time.sleep(1)
+        else:
+            article_gossiping = crawl_page_gossiping(res)
+            # print u'OK_URL:', index
+            # time.sleep(0.05)
+    content = ''
+    for index, article in enumerate(article_gossiping, 0):
+        if index == 5:
+            return content
+        data = '{}\n{}\n\n'.format(article.get('title', None), article.get('url_link', None))
+        content += data
+    return content
+	
+def movie():
+    target_url = 'http://www.atmovies.com.tw/movie/next/0/'
+    print('Start parsing movie ...')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')
+    content = ""
+    for index, data in enumerate(soup.select('ul.filmNextListAll a')):
+        if index == 20:
+            return content
+        title = data.text.replace('\t', '').replace('\r', '')
+        link = "http://www.atmovies.com.tw" + data['href']
+        content += '{}\n{}\n'.format(title, link)
+    return content
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
         
-        if event.message.text == "蘋":
+        if event.message.text == "蘋果":
             print("event.reply_token:", event.reply_token)
             print("event.message.text:", event.message.text)
             content = apple_news()
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
+            
+        if event.message.text == "表特":
+            content = ptt_beauty()
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+            
+        if event.message.text == "廢文":
+            content = ptt_gossiping()
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
         
-		
+		if event.message.text == "電影":
+            content = movie()
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+
+
         if event.message.text == "抽":
             print("event.reply_token:", event.reply_token)
             print("event.message.text:", event.message.text)
